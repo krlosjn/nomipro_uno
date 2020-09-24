@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block content%}
+
+<div class='container text-center'>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <h1>Periodo</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='row'>
+        <div class='col'>
+            <div class='table-responsive'>
+                <table class='table table-bordered table-striped table-hover'>
+                    <thead>
+                        <tr>
+                            <td>id periodo</td>
+                            <td>Anual</td>
+                            <td>Mes</td>
+                            <td>
+                            <a class='btn btn-primary' href="{% url 'periodo_crear' %}">Crear</a>
+                            </td>   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if object_list%}
+                        {% for periodo in object_list%}
+                        <tr>
+                            <td>{{periodo.ide_periodo}}</td>
+                            <td>{{periodo.anual}}</td>
+                            <td>{{periodo.mes}}</td>
+                            <td>
+                                <a class="btn btn-secondary" href="{% url 'periodo_editar' periodo.ide_periodo  %}">Editar</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="{% url 'periodo_detalles' periodo.ide_periodo  %}">Ver</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                         <h5>No se encuentran registros </h5>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>  
+     
+</div>
+{% endblock %}
+
+ 

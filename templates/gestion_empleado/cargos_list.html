@@ -1,0 +1,63 @@
+{% extends 'base/base.html'%}
+
+
+
+{% block content %}
+
+<div=class='container text-center'>
+
+   <div class='container'>
+      <div class='row'>
+        <div class='col'>
+            <h1>Cargos listado</h1>
+        </div>    
+      </div>   
+    </div>
+
+  <div class='row'>
+    <div class='col'>
+  
+      <div class='table-responsive'>
+          {% comment %} permite ver la tabla cebreada, sombreada  {% endcomment %}
+        <table class='table table-striped table-hover table-bordered' >
+          <thead> 
+            <tr>
+                <td> id cargos</td>
+                <td> Nombre cargo  </td>
+                <td> valor por cargo </td> 
+                {% comment %} btón para crear  {% endcomment %}
+                <td>
+                  <a class="btn btn-primary" href="{% url 'cargos_crear'%}">Crear</a>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            {% if object_list %}
+            {% for cargos in object_list%}
+            <tr>
+                <td>{{cargos.ide_cargos}}</td>
+                <td>{{cargos.nombre}}</td>
+                <td>{{cargos.valor_cargo}}</td>
+                <td>
+                  <a class="btn btn-secondary"  href="{% url 'cargos_editar' cargos.ide_cargos %}">Editar</a>
+                </td>
+                <td>
+                  <a class='btn btn-info' href="{% url 'cargos_detalles' cargos.ide_cargos %}">Ver</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <h5>No existen registros</h5>
+            {% endif %}
+          </tbody>
+        </table>
+        
+      </div>
+
+    </div>  
+
+  </div>
+
+</div>
+
+{% endblock %}

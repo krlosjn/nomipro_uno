@@ -1,0 +1,74 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+
+<div class='container text-center'>
+
+
+<div class='container'>
+    <div class='row'>
+        <div class='col'>
+            <h1>Reporte de horas</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <div class='row'>
+
+        <div class='col'>
+         
+            <div class='table-responsive'>
+
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <td>id reporte de horas</td>
+                            <td>id empleado</td>
+                            <td>id periodo</td>
+                            <td>número de horas</td>
+                            <td>
+                            <a class='btn btn-primary' href="{% url 'reportehoras_crear' %}">Crear</a>
+                            
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if object_list %}
+                        {% for reporte_horas in object_list%}
+                        <tr>
+                            <td>{{reporte_horas.ide_reportehoras}}</td>
+                            <td>{{reporte_horas.ide_empleado.ide_empleado}}</td>
+                            <td>{{reporte_horas.ide_periodo.ide_periodo}}</td>
+                            <td>{{reporte_horas.numerohoras}}</td>
+                         
+                            <td>
+                                <a  class='btn btn-secondary' href="{% url 'reportehoras_editar' reporte_horas.ide_reportehoras %}">Editar</a>
+                            </td>
+
+                            <td>
+                                <a  class='btn btn-info' href="{% url 'reportehoras_detalles' reporte_horas.ide_reportehoras %}">Ver</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <h5>No hay registros</h5>
+                        {% endif %}
+                    </tbody>
+
+
+                </table>
+
+            </div>    
+
+
+        </div>    
+
+    </div>
+
+</div>
+
+{% endblock %}
+

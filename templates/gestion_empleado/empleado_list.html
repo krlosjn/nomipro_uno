@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+
+{% block content%}
+
+<div class='container text-center'>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <h1>Empleado Lista</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='row'>
+
+        <div class='col'>
+
+            <div class='table-responsive'>
+
+                <table class="table table-bordered  table-striped table-hover table bordered'">
+                    <thead>
+                        <tr>
+                            <td>id empleado</td>
+                            <td>Nombre</td>
+                            <td>Apellidos</td>
+                            <td>Correo</td>
+                            <td>Teléfono</td>
+                            <td>Número documento</td>
+                            <td>Tipo documento</td>
+                            <td>id Cargos</td>
+                            <td>id tipo vinculacion</td>
+                            <td>estado</td>
+                            <td>
+                            <a class='btn btn-primary' href="{% url 'empleado_crear' %}">Crear</a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if object_list%}
+                        {% for empleado in object_list %}
+                        <tr>
+                            <td>{{empleado.ide_empleado}}</td>
+                            <td>{{empleado.nombre}}</td>
+                            <td>{{empleado.apellido}}</td>
+                            <td>{{empleado.correo}}</td>
+                            <td>{{empleado.telefono}}</td>
+                            <td>{{empleado.numero_documento}}</td>
+                            <td>{{empleado.tipo_documento}}</td>
+                            <td>{{empleado.ide_cargos.ide_cargos}}</td>
+                            <td>{{empleado.ide_tipovinculacion.ide_tipovinculacion}}</td>
+                            <td>{{empleado.estado}}</td>
+                            <td>
+                                <a class="btn btn-secondary" href="{% url 'empleado_editar' empleado.ide_empleado %}">Editar</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-info" href="{% url 'empleado_detalles' empleado.ide_empleado %}">Ver</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <h5>No existen registros de empleados</h5>
+                        {% endif %}
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+

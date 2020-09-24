@@ -1,0 +1,73 @@
+{% extends 'base/base.html'%}
+
+{% block content %}
+
+
+
+<div class='container text-center'>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <h1>Nómina</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col'>
+            <div class='table-responsive'>
+                <table class='table table-bordered table-striped table-hover'>
+                    <thead>
+                        <tr>
+                            <td>id nómina</td>
+                            <td>Valor a pagar</td>
+                            <td>subtotal</td>
+                            <td>id periodo</td>
+                            <td>id empleado</td>
+                            <td> estado</td>
+                            <td> Total</td>
+                            <td>
+                            <a class='btn btn-primary' href="{% url 'nomina_crear' %}">Crear</a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if object_list %}
+                    {% for nomina in object_list %}
+                        <tr>
+                            <td>{{nomina.ide_nomina}}</td>
+                            <td>{{nomina.valorapagar}}</td>
+                            <td>{{nomina.subtotal}}</td>
+                            <td>{{nomina.ide_periodo.ide_periodo}}</td>
+                            <td>{{nomina.ide_empleado.ide_empleado}}</td>
+                            <td>{{nomina.estado}}</td>
+                            <td>{{nomina.total}}</td>
+
+                            <td>
+
+                                <a class="btn btn-secondary" href="{% url 'nomina_editar' nomina.ide_nomina  %}">Editar</a>
+                            </td>
+
+                            <td>
+
+                                <a class="btn btn-info" href="{% url 'nomina_detalles' nomina.ide_nomina  %}">Ver</a>
+                            </td>
+
+
+                        </tr>
+
+
+                        </tr>
+                    {% endfor %}
+                    {% else %}
+                      <h5>No se encuentran registros</h5>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

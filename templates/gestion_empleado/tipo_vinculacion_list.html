@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class='container text-center'>
+
+  <div class='container'>
+    <div class='row'>     
+      <div class='col'>
+        <h1>Tipo de vinculación </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+
+    <div class='col'>
+
+      <div class='table-responsive'>
+          <table class=" table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                  <td> id tipo de vinculación</td>
+                  <td> Descripción tipo vinculación</td>
+                  <td> Estado </td>
+                  <td>
+                    <a class='btn btn-primary'  href="{% url 'tipovinculacion_crear'%}">Crear</a>
+                  </td>
+              </tr>
+            </thead>
+            <tbody>
+              {% if object_list %}
+              {% for tipo_vinculacion in object_list %}
+              <tr>
+                  <td>{{tipo_vinculacion.ide_tipovinculacion}}</td>
+                  <td>{{tipo_vinculacion.descripciontipo}}</td>
+                  <td>{{tipo_vinculacion.estado}}</td>    
+                  <td>
+                    <a class="btn btn-secondary" href="{% url  'tipovinculacion_editar'  tipo_vinculacion.ide_tipovinculacion %}">Editar</a>
+                </td>
+
+                <td>
+                  <a class='btn btn-info'  href="{% url 'tipovinculacion_detalles' tipo_vinculacion.ide_tipovinculacion %}">Ver</a>
+                
+                </td>
+              </tr>
+              {% endfor %}
+              {% else %}
+                <h5>No se encuentran registros disponibles</h5>
+              {% endif %}
+
+            </tbody>
+          </table>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base/base.html'%}
+
+{% block title %} 
+    <div class='container text-center'>
+        <h1>Nomipro</h1>
+    </div>
+{% endblock %}
+
+{% block navbar%}
+{% endblock %}
+
+{% block content %}
+
+<div class="wrapper-page">
+<div class="container text-center">
+
+     <div class="text-center">
+        <a href="index.html" class="logo"><span>Nomi<span>pro</span></span></a>
+        <h5 class="text-muted mt-0 font-600">Gestión de nómina </h5>
+    </div>
+
+    <div class="m-t-40 card-box">
+
+        <form method='post'>
+            {% csrf_token %}
+                    <div class='row'>
+                        <div class="col-xl-12">
+                            <div clas="form-group">
+                                <label for="username">Nombre de usuario</label>
+                                <input class="form-control" type="text" name="username">
+                            </div>
+                        </div>
+                    </div>
+
+        
+                    <div class='row'>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="username">Contraseña</label>
+                                <input class="form-control" type="password" name="password">
+                            </div>  
+                        </div>
+                    </div>
+            
+            
+
+            
+                    <div class='row'>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <a href="{% url 'password_reset' %}"> Olvidé la contraseña </a>
+                                <input class="btn btn-primary" type="submit" value="ingresar">
+                            </div>
+                        </div>
+                    </div>
+                    
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+{% comment %} 
+<div class="wrapper-page">
+    <div class="text-center">
+        <a href="index.html" class="logo"><span>Nomi<span>pro</span></span></a>
+        <h5 class="text-muted mt-0 font-600">Responsive Admin Dashboard</h5>
+    </div>
+    <div class="m-t-40 card-box">
+        <div class="text-center">
+            <h4 class="text-uppercase font-bold mb-0">Sign In</h4>
+        </div> {% endcomment %}

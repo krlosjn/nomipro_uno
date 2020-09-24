@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class='container text-center'>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <h1>Detalle parafiscal</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div clas='row'>
+
+        <div class='col'>
+
+            <div class='table-responsive'>
+
+                <table class='table table-bordered table-striped table-hover'>
+                    <thead>
+                        <tr>
+                            <td>id detalle parafiscal</td>
+                            <td>id nómina</td>
+                            <td>total parafiscal</td>
+                            <td>id parafiscales</td>
+                            <td>
+                            <a class='btn btn-primary' href="{% url 'detalleparafiscal_crear'%}">Crear</a>
+                            
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if object_list %}
+                        {% for detalleparafiscal in object_list%}
+                        <tr>
+                            <td>{{detalleparafiscal.ide_detalleparafiscal}}</td>
+                            <td>{{detalleparafiscal.ide_nomina.ide_nomina}}</td>
+                            <td>{{detalleparafiscal.totalparafiscal}}</td>
+                            <td>{{detalleparafiscal.ide_parafiscales.ide_parafiscales}}</td>
+                            <td>
+                                <a class='btn btn-secondary'  href="{% url 'detalleparafiscal_editar' detalleparafiscal.ide_detalleparafiscal %}">Editar</a>
+                            </td>
+
+                            <td>
+                                <a class='btn btn-info'  href="{% url 'detalleparafiscal_detalles' detalleparafiscal.ide_detalleparafiscal %}">Ver</a>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <h5>No se encuentran registros</h5>
+                        {% endif %}
+                    </tbody>
+                </table>
+
+            </div>    
+
+        </div>    
+
+    </div>
+
+</div>
+{% endblock %}

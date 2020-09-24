@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class='container text-center'>
+
+<div class='container'>
+    <div class='row'>
+        <div class='col'>
+            <h1>Horas adicionales</h1>
+        </div>
+    </div>
+</div>
+
+    <div class='row'>
+        <div class='col'>
+            <div class='table-responsive'>
+                <table class='table table-bordered table-striped table-hover'>
+                    <thead>
+                        <tr>
+                            <td>id horas adicionales</td>
+                            <td>nombre</td>
+                            <td>valor por hora</td>
+                            <td>Estado</td>
+                            <td>id reporte horas</td>
+                            <td>
+                            <a class='btn btn-primary' href="{% url 'horasadicionales_crear'%}">Crear</a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if object_list %}
+                        {% for horas_adicionales in object_list %}
+                        <tr>
+                            <td>{{horas_adicionales.ide_horasadicionales}}</td>
+                            <td>{{horas_adicionales.nombre}}</td>
+                            <td>{{horas_adicionales.valor_porhora}}</td>
+                            <td>{{horas_adicionales.estado}}</td>
+                            <td>{{horas_adicionales.ide_reportehoras.ide_reportehoras}}</td>
+                            <td>
+                                <a class='btn btn-secondary' href="{% url 'horasadicionales_editar' horas_adicionales.ide_horasadicionales %}">Editar</a>
+
+                            </td>
+
+                            <td>
+                                <a class='btn btn-info' href="{% url 'horasadicionales_detalles' horas_adicionales.ide_horasadicionales %}">Ver</a>
+
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <h5>No hay registros</h5>
+                        {% endif %}
+                    </tbody>
+                </table>
+
+            </div>    
+
+        </div>    
+
+    </div>    
+</div>
+
+{% endblock %}

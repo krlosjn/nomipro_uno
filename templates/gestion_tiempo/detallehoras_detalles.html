@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<main role="main">
+
+<div class="container text-center mt-5">
+    <br><br>
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 style="font-size: 28px;">Detalles horas </h1>
+        </div>
+ 
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <nav aria-label="breadcrumb mb-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="./">Detalle horas</a></li>
+                        <li class="breadcrumb-item active">Detalles</li>
+                    </ol>
+                </nav>
+                <div class="form align=left" >
+                    <h4>Detalles</h4>
+                    {% comment %} <p><span class="txt_negrita">id empleado:</span><br>{{ object.ide_empleado}}</p> {% endcomment %}
+                    <p><span class="txt_negrita">Total:</span><br>{{ object.total}}</p>
+                    <p><span class="txt_negrita">Cantidad:</span><br>{{ object.cantidad}}</p>
+                
+                    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+ {% endblock %} 
